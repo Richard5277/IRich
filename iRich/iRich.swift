@@ -17,7 +17,6 @@ public extension UIView {
 
 public extension UIColor {
     convenience init(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) {
-        //MARK: gotta use self.init inside a convenience, not super
         self.init(red: r/255, green: g/255, blue: b/255, alpha: a)
     }
 }
