@@ -8,14 +8,14 @@
 
 import UIKit
 
-extension UIView {
+public extension UIView {
     func addCustomView(_ view: UIView){
         view.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(view)
     }
 }
 
-extension UIColor {
+public extension UIColor {
     convenience init(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) {
         //MARK: gotta use self.init inside a convenience, not super
         self.init(red: r/255, green: g/255, blue: b/255, alpha: a)
@@ -24,7 +24,7 @@ extension UIColor {
 
 // MARK: Change the size of the Image
 
-extension UIImage {
+public extension UIImage {
     func resizeToWidth(_ newWidth: CGFloat) -> UIImage {
         let scale = newWidth / self.size.width
         let newHeight = self.size.height * scale
@@ -38,7 +38,7 @@ extension UIImage {
 }
 
 
-extension String {
+public extension String {
     func capitalizingFirstLetter() -> String {
         let firstLetter = String(characters.prefix(1)).capitalized
         let other = String(characters.dropFirst()) //MARK: dropFirst dropLast dropFirst(n: Int)
