@@ -1,0 +1,51 @@
+//
+//  iRich.swift
+//  iRich
+//
+//  Created by Feihong Zhao on 2017-03-26.
+//  Copyright © 2017 Feihong Zhao. All rights reserved.
+//
+
+import UIKit
+
+extension UIView {
+    func addCustomView(_ view: UIView){
+        view.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(view)
+    }
+}
+
+extension UIColor {
+    convenience init(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) {
+        //MARK: gotta use self.init inside a convenience, not super
+        self.init(red: r/255, green: g/255, blue: b/255, alpha: a)
+    }
+}
+
+// MARK: Change the size of the Image
+
+extension UIImage {
+    func resizeToWidth(_ newWidth: CGFloat) -> UIImage {
+        let scale = newWidth / self.size.width
+        let newHeight = self.size.height * scale
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        self.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
+}
+
+
+extension String {
+    func capitalizingFirstLetter() -> String {
+        let firstLetter = String(characters.prefix(1)).capitalized
+        let other = String(characters.dropFirst()) //MARK: dropFirst dropLast dropFirst(n: Int)
+        return firstLetter + other
+    }
+    
+    mutating func capitalizeFirstLetter(){
+        self = self.capitalizingFirstLetter()
+    }
+}
